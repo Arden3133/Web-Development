@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John's Painting Services</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>John's Painting Services - Professional House Painting Services</h1>
+        <nav>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="services">
+            <h2>Our Services</h2>
+            <p>We offer a wide range of house painting services to suit your needs:</p>
+            <ul>
+                <li>Interior Painting</li>
+                <li>Exterior Painting</li>
+                <li>Deck Staining</li>
+                <li>Fence Staining</li>
+                <li>Custom Paint Finishes</li>
+            </ul>
+        </section>
+
+        <section id="gallery" class="gallery-container">
+            <h2>Gallery</h2>
+            <!-- The images will be dynamically added here via JavaScript -->
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 John's Painting Services. All rights reserved.</p>
+    </footer>
+
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img id="modalImage" class="modal-content" alt="Modal">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
