@@ -7,7 +7,7 @@ const projects = [
     { src: 'images/exterior painting.jpg', alt: 'Exterior Painting' },
     { src: 'images/deck staining.jpg', alt: 'Deck Staining' },
     { src: 'images/fence staining.jpg', alt: 'Fence Staining' },
-    { src: 'images/custom paint finishes.jpg', alt: 'Custom Paint Finishes' },
+    { src: 'images/custom_paint_finishes.jpg', alt: 'Custom Paint Finishes' },
 ];
 
 function createGallery() {
