@@ -57,6 +57,7 @@ function createGallery() {
 // Initialize the page and gallery
 function initializePage() {
     createGallery();
+     enableSmoothScrolling();
 }
 
 document.addEventListener('DOMContentLoaded', initializePage);
