@@ -37,11 +37,12 @@ function createGallery() {
         const imageDiv = document.createElement('div');
         imageDiv.classList.add('gallery-item');
 
-        // Create the image element
+        //Create the image element
         const img = document.createElement('img');
         img.src = imagePath;
         img.alt = image.caption;
         img.onerror = () => console.error(`Image not found: ${imagePath}`);
+        img.addEventListener('click', () => openModal(imagePath, image.caption)); // Click to enlarge
 
         // Create the caption
         const caption = document.createElement('p');
