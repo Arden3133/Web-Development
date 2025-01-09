@@ -19,6 +19,47 @@ const projects = [
     { filename: 'custom paint finishes.jpg', alt: 'Custom Paint Finishes' },
 ];
 
+const services = [
+    { name: 'Interior Painting', image: 'interior painting.jpg' },
+    { name: 'Exterior Painting', image: 'exterior painting.jpg' },
+    { name: 'Deck Staining', image: 'deck staining.jpg' },
+    { name: 'Fence Staining', image: 'fence staining.jpg' },
+    { name: 'Custom Paint Finishes', image: 'custom paint finishes.jpg' },
+];
+
+// Function to dynamically generate services with images
+function createServiceGallery() {
+    const servicesContainer = document.querySelector('.services-container');
+    servicesContainer.innerHTML = ""; // Clear existing content
+
+    services.forEach((service) => {
+        const serviceDiv = document.createElement('div');
+        serviceDiv.classList.add('service');
+
+        // Add the image
+        const img = document.createElement('img');
+        img.src = `images/${service.image}`; // Link to images folder
+        img.alt = service.name;
+        img.onerror = () => console.error(`Image not found: images/${service.image}`);
+
+        // Add the service name
+        const serviceName = document.createElement('h3');
+        serviceName.textContent = service.name;
+
+        serviceDiv.appendChild(img);
+        serviceDiv.appendChild(serviceName);
+        servicesContainer.appendChild(serviceDiv);
+    });
+}
+
+// Initialize the page
+function initializePage() {
+    createServiceGallery();
+
+    // Additional initializations if needed...
+}
+
+document.addEventListener('DOMContentLoaded', initializePage);
 function createGallery() {
     const galleryContainer = document.querySelector('.gallery-container');
     galleryContainer.innerHTML = "";
