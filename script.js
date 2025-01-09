@@ -9,6 +9,22 @@ const galleryImages = [
     { filename: 'custom paint finishes.jpg', caption: 'Custom Paint Finishes' },
 ];
 
+// Smooth scrolling for navigation links
+function enableSmoothScrolling() {
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const targetId = link.getAttribute('href').slice(1); // Remove the '#' from the href
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+}
+
 // Function to create the gallery dynamically
 function createGallery() {
     const galleryContainer = document.querySelector('.gallery-container');
