@@ -1,109 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John's Painting Services</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>John's Painting Services</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#process">Our Process</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+// script.js
 
-    <main>
-        <section id="about">
-            <h2>About Us</h2>
-            <p>
-                Welcome to John's Painting Services, your trusted partner in creating beautifully painted spaces. 
-                With over 15 years of experience in the painting industry, we specialize in transforming homes 
-                and businesses into stunning works of art. Our team is committed to delivering exceptional quality, 
-                attention to detail, and unmatched customer satisfaction.
-            </p>
-        </section>
+// Dynamically load gallery images from the local images folder
+const projects = [
+    { src: 'images/interior painting.jpg', alt: 'Interior Painting' },
+    { src: 'images/interior painting 2.jpg', alt: 'Another Interior Painting' },
+    { src: 'images/exterior painting.jpg', alt: 'Exterior Painting' },
+    { src: 'images/deck staining.jpg', alt: 'Deck Staining' },
+    { src: 'images/fence staining.jpg', alt: 'Fence Staining' },
+    { src: 'images/custom paint finishes.jpg', alt: 'Custom Paint Finishes' },
+];
 
-        <section id="services">
-            <h2>Our Services</h2>
-            <ul>
-                <li><strong>Interior Painting:</strong> Enhance your indoor spaces with flawless, long-lasting finishes.</li>
-                <li><strong>Exterior Painting:</strong> Protect and beautify your property with weather-resistant coatings.</li>
-                <li><strong>Deck Staining:</strong> Revitalize your outdoor living areas with durable stains and finishes.</li>
-                <li><strong>Fence Staining:</strong> Add curb appeal and longevity to your fences.</li>
-                <li><strong>Custom Paint Finishes:</strong> Unique and tailored finishes to suit your style.</li>
-            </ul>
-        </section>
+function createGallery() {
+    const galleryContainer = document.querySelector('.gallery-container');
 
-        <section id="process">
-            <h2>Our Process</h2>
-            <p>We follow a structured approach to ensure top-quality results:</p>
-            <ol>
-                <li><strong>Consultation:</strong> Discuss your needs, preferences, and budget.</li>
-                <li><strong>Preparation:</strong> Protect surfaces, repair damage, and prep for painting.</li>
-                <li><strong>Painting:</strong> Apply premium-quality paints with precision and care.</li>
-                <li><strong>Inspection:</strong> Review the work to ensure it meets our high standards.</li>
-                <li><strong>Cleanup:</strong> Leave your space spotless and ready to enjoy.</li>
-            </ol>
-        </section>
+    projects.forEach((project) => {
+        const projectDiv = document.createElement('div');
+        projectDiv.classList.add('painting');
 
-        <section id="testimonials">
-            <h2>What Our Customers Say</h2>
-            <blockquote>
-                "John's Painting Services completely transformed our living room. The team was professional and efficient. Highly recommend!" – Sarah M.
-            </blockquote>
-            <blockquote>
-                "Exceptional quality and attention to detail. Our home looks brand new!" – Mike D.
-            </blockquote>
-        </section>
+        const img = document.createElement('img');
+        img.src = project.src;
+        img.alt = project.alt;
+        img.addEventListener('click', () => openModal(project.src));
 
-        <section id="faq">
-            <h2>Frequently Asked Questions</h2>
-            <dl>
-                <dt>How long does a typical painting project take?</dt>
-                <dd>Most projects are completed within 2-5 days, depending on the size and scope.</dd>
-                <dt>Do you use eco-friendly paints?</dt>
-                <dd>Yes, we offer a range of environmentally friendly, low-VOC paints.</dd>
-                <dt>Do you provide a warranty?</dt>
-                <dd>Yes, we offer a satisfaction guarantee and a 1-year warranty on all work.</dd>
-            </dl>
-        </section>
+        const caption = document.createElement('p');
+        caption.textContent = project.alt;
 
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <form id="contactForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-                
-                <button type="submit">Send</button>
-            </form>
-        </section>
-    </main>
+        projectDiv.appendChild(img);
+        projectDiv.appendChild(caption);
+        galleryContainer.appendChild(projectDiv);
+    });
+}
 
-    <footer>
-        <p>&copy; 2025 John's Painting Services. All Rights Reserved.</p>
-    </footer>
+// Modal functionality for gallery images
+function openModal(imageSrc) {
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modalImage');
+    modal.style.display = 'flex';
+    modalImage.src = imageSrc;
+}
 
-    <div id="modal">
-        <span class="close">&times;</span>
-        <img id="modalImage" alt="Full View">
-    </div>
+function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+// Handle contact form submission
+function setupContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        alert(`Thank you, ${name}! Your message has been sent. We'll get back to you soon.`);
+        contactForm.reset();
+    });
+}
+
+// Initialize the website
+function initializePage() {
+    createGallery();
+    setupContactForm();
+
+    const closeModalButton = document.querySelector('.close');
+    closeModalButton.addEventListener('click', closeModal);
+}
+
+document.addEventListener('DOMContentLoaded', initializePage);
 
