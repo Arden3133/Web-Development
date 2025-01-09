@@ -10,24 +10,37 @@ const projects = [
     { src: 'images/custom_paint_finishes.jpg', alt: 'Custom Paint Finishes' },
 ];
 
+const projects = [
+    { filename: 'interior painting.jpg', alt: 'Interior Painting' },
+    { filename: 'interior painting 2.jpg', alt: 'Interior Painting 2' },
+    { filename: 'exterior painting.jpg', alt: 'Exterior Painting' },
+    { filename: 'deck staining.jpg', alt: 'Deck Staining' },
+    { filename: 'fence staining.jpg', alt: 'Fence Staining' },
+    { filename: 'custom paint finishes.jpg', alt: 'Custom Paint Finishes' },
+];
+
 function createGallery() {
     const galleryContainer = document.querySelector('.gallery-container');
+    galleryContainer.innerHTML = "";
 
     projects.forEach((project) => {
-        const projectDiv = document.createElement('div');
-        projectDiv.classList.add('painting');
-
+        const imgPath = `images/${project.filename}`;
         const img = document.createElement('img');
-        img.src = project.src;
+        img.src = imgPath;
         img.alt = project.alt;
-        img.addEventListener('click', () => openModal(project.src));
 
         const caption = document.createElement('p');
         caption.textContent = project.alt;
 
+        const projectDiv = document.createElement('div');
+        projectDiv.classList.add('painting');
         projectDiv.appendChild(img);
         projectDiv.appendChild(caption);
+
         galleryContainer.appendChild(projectDiv);
+
+        // Debugging logs for missing images
+        img.onerror = () => console.error(`Image not found: ${imgPath}`);
     });
 }
 
