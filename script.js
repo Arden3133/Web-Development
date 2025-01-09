@@ -1,89 +1,49 @@
 // script.js
 
 // Updated gallery to load images dynamically from the 'images' folder
-const projects = [
-    { src: 'images/interior painting.jpg', alt: 'Interior Painting' },
-    { src: 'images/interior painting 2.jpg', alt: 'Interior Painting 2' },
-    { src: 'images/exterior painting.jpg', alt: 'Exterior Painting' },
-    { src: 'images/deck staining.jpg', alt: 'Deck Staining' },
-    { src: 'images/fence staining.jpg', alt: 'Fence Staining' },
-    { src: 'images/custom_paint_finishes.jpg', alt: 'Custom Paint Finishes' },
+const galleryImages = [
+    { filename: 'interior painting.jpg', caption: 'Interior Painting' },
+    { filename: 'exterior painting.jpg', caption: 'Exterior Painting' },
+    { filename: 'deck staining.jpg', caption: 'Deck Staining' },
+    { filename: 'fence staining.jpg', caption: 'Fence Staining' },
+    { filename: 'custom paint finishes.jpg', caption: 'Custom Paint Finishes' },
 ];
 
-const projects = [
-    { filename: 'interior painting.jpg', alt: 'Interior Painting' },
-    { filename: 'interior painting 2.jpg', alt: 'Interior Painting 2' },
-    { filename: 'exterior painting.jpg', alt: 'Exterior Painting' },
-    { filename: 'deck staining.jpg', alt: 'Deck Staining' },
-    { filename: 'fence staining.jpg', alt: 'Fence Staining' },
-    { filename: 'custom paint finishes.jpg', alt: 'Custom Paint Finishes' },
-];
+// Function to create the gallery dynamically
+function createGallery() {
+    const galleryContainer = document.querySelector('.gallery-container');
+    galleryContainer.innerHTML = ''; // Clear existing content
 
-const services = [
-    { name: 'Interior Painting', image: 'interior painting.jpg' },
-    { name: 'Exterior Painting', image: 'exterior painting.jpg' },
-    { name: 'Deck Staining', image: 'deck staining.jpg' },
-    { name: 'Fence Staining', image: 'fence staining.jpg' },
-    { name: 'Custom Paint Finishes', image: 'custom paint finishes.jpg' },
-];
+    galleryImages.forEach((image) => {
+        const imagePath = `images/${image.filename}`;
 
-// Function to dynamically generate services with images
-function createServiceGallery() {
-    const servicesContainer = document.querySelector('.services-container');
-    servicesContainer.innerHTML = ""; // Clear existing content
+        // Create a container for each image
+        const imageDiv = document.createElement('div');
+        imageDiv.classList.add('gallery-item');
 
-    services.forEach((service) => {
-        const serviceDiv = document.createElement('div');
-        serviceDiv.classList.add('service');
-
-        // Add the image
+        // Create the image element
         const img = document.createElement('img');
-        img.src = `images/${service.image}`; // Link to images folder
-        img.alt = service.name;
-        img.onerror = () => console.error(`Image not found: images/${service.image}`);
+        img.src = imagePath;
+        img.alt = image.caption;
+        img.onerror = () => console.error(`Image not found: ${imagePath}`);
 
-        // Add the service name
-        const serviceName = document.createElement('h3');
-        serviceName.textContent = service.name;
+        // Create the caption
+        const caption = document.createElement('p');
+        caption.textContent = image.caption;
 
-        serviceDiv.appendChild(img);
-        serviceDiv.appendChild(serviceName);
-        servicesContainer.appendChild(serviceDiv);
+        // Append elements to the container
+        imageDiv.appendChild(img);
+        imageDiv.appendChild(caption);
+        galleryContainer.appendChild(imageDiv);
     });
 }
 
-// Initialize the page
+// Initialize the page and gallery
 function initializePage() {
-    createServiceGallery();
-
-    // Additional initializations if needed...
+    createGallery();
 }
 
 document.addEventListener('DOMContentLoaded', initializePage);
-function createGallery() {
-    const galleryContainer = document.querySelector('.gallery-container');
-    galleryContainer.innerHTML = "";
-
-    projects.forEach((project) => {
-        const imgPath = `images/${project.filename}`;
-        const img = document.createElement('img');
-        img.src = imgPath;
-        img.alt = project.alt;
-
-        const caption = document.createElement('p');
-        caption.textContent = project.alt;
-
-        const projectDiv = document.createElement('div');
-        projectDiv.classList.add('painting');
-        projectDiv.appendChild(img);
-        projectDiv.appendChild(caption);
-
-        galleryContainer.appendChild(projectDiv);
-
-        // Debugging logs for missing images
-        img.onerror = () => console.error(`Image not found: ${imgPath}`);
-    });
-}
 
 // Modal functionality for gallery images
 function openModal(imageSrc) {
@@ -101,7 +61,7 @@ function closeModal() {
 // Handle contact form submission
 function setupContactForm() {
     const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', function(event) {
+    contactForm.addEventListener('submit', function (event) {
         event.preventDefault();
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
