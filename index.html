@@ -1,64 +1,169 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>John's Painting Services</title>
+
     <link rel="stylesheet" href="styles.css">
+
 </head>
+
 <body>
+
     <header>
-        <h1>John's Painting Services - Professional House Painting Services</h1>
+
+        <h1>John's Painting Services</h1>
+
         <nav>
+
             <ul>
+
+                <li><a href="#about">About Us</a></li>
+
                 <li><a href="#services">Services</a></li>
+
                 <li><a href="#gallery">Gallery</a></li>
+
                 <li><a href="#contact">Contact</a></li>
+
             </ul>
+
         </nav>
+
     </header>
+
+
+
     <main>
-        <section id="services">
-            <h2>Our Services</h2>
-            <p>We offer a wide range of house painting services to suit your needs:</p>
-            <ul>
-                <li>Interior Painting</li>
-                <li>Exterior Painting</li>
-                <li>Deck Staining</li>
-                <li>Fence Staining</li>
-            </ul>
+
+        <section id="about">
+
+            <h2>About Us</h2>
+
+            <p>
+
+                Welcome to John's Painting Services, your trusted partner in creating beautifully painted spaces. 
+
+                With over 15 years of experience in the painting industry, we specialize in transforming homes 
+
+                and businesses into stunning works of art. Our team is committed to delivering exceptional quality, 
+
+                attention to detail, and unmatched customer satisfaction. From interior walls to exterior finishes, 
+
+                we use premium materials and innovative techniques to ensure results that last.
+
+            </p>
+
+            <p>
+
+                At John's Painting Services, we believe that a fresh coat of paint is more than just color—it's 
+
+                a way to breathe life into your space. Whether you're looking for a modern transformation or timeless 
+
+                elegance, we're here to make your vision a reality.
+
+            </p>
+
         </section>
+
+
+
+        <section id="services">
+
+            <h2>Our Services</h2>
+
+            <ul>
+
+                <li><strong>Interior Painting:</strong> Enhance your indoor spaces with flawless, long-lasting finishes.</li>
+
+                <li><strong>Exterior Painting:</strong> Protect and beautify your property with weather-resistant coatings.</li>
+
+                <li><strong>Deck Staining:</strong> Revitalize your outdoor living areas with durable stains and finishes.</li>
+
+                <li><strong>Fence Staining:</strong> Add curb appeal and longevity to your fences.</li>
+
+                <li><strong>Custom Paint Finishes:</strong> Unique and tailored finishes to suit your style.</li>
+
+            </ul>
+
+        </section>
+
+
 
         <section id="gallery" class="gallery-container">
+
             <h2>Gallery</h2>
-            <!-- The images will be dynamically added here via JavaScript -->
+
+            <p>Click on an image to view it in full size.</p>
+
+            <!-- Images dynamically added by script.js -->
+
         </section>
+
+
 
         <section id="contact">
+
             <h2>Contact Us</h2>
+
             <form id="contactForm">
+
                 <label for="name">Name:</label>
+
                 <input type="text" id="name" name="name" required>
 
+                
+
                 <label for="email">Email:</label>
+
                 <input type="email" id="email" name="email" required>
 
+                
+
                 <label for="message">Message:</label>
+
                 <textarea id="message" name="message" required></textarea>
 
+                
+
                 <button type="submit">Send</button>
+
             </form>
+
         </section>
+
     </main>
+
+
+
     <footer>
-        <p>&copy; 2025 John's Painting Services. All rights reserved.</p>
+
+        <p>&copy; 2025 John's Painting Services. All Rights Reserved.</p>
+
     </footer>
 
-    <div id="modal" class="modal">
+
+
+    <div id="modal">
+
         <span class="close">&times;</span>
-        <img id="modalImage" class="modal-content" alt="Modal">
+
+        <img id="modalImage" alt="Full View">
+
     </div>
 
+
+
     <script src="script.js"></script>
+
 </body>
+
 </html>
+
+"""
