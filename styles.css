@@ -46,6 +46,35 @@ section {
 h2 {
     color: #6A0DAD;
 }
+/* Gallery styling */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.gallery-item {
+    text-align: center;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.gallery-item p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #6A0DAD;
+}
 
 .services-container {
     display: flex;
