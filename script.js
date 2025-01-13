@@ -1,5 +1,4 @@
 // script.js
-
 // Define gallery images with filenames and captions
 const galleryImages = [
     { filename: 'interior painting.jpg', caption: 'Interior Painting' },
@@ -25,8 +24,8 @@ function createGallery() {
         const img = document.createElement('img');
         img.src = imagePath;
         img.alt = image.caption;
-        img.onerror = () => console.error(`Image not found: ${imagePath}`);
-        img.addEventListener('click', () => openModal(imagePath, image.caption)); // Click to enlarge
+        img.classList.add('gallery-image'); // Add a class for styling
+        img.addEventListener('click', () => openModal(imagePath, image.caption)); // Attach click event
 
         // Create the caption
         const caption = document.createElement('p');
@@ -93,6 +92,7 @@ function enableSmoothScrolling() {
         });
     });
 }
+
 // Handle contact form submission
 function setupContactForm() {
     const contactForm = document.getElementById('contactForm');
