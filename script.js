@@ -1,6 +1,6 @@
 // script.js
 
-// Updated gallery to load images dynamically from the 'images' folder
+// Define gallery images with filenames and captions
 const galleryImages = [
     { filename: 'interior painting.jpg', caption: 'Interior Painting' },
     { filename: 'exterior painting.jpg', caption: 'Exterior Painting' },
@@ -8,22 +8,6 @@ const galleryImages = [
     { filename: 'fence staining.jpg', caption: 'Fence Staining' },
     { filename: 'custom paint finishes.jpg', caption: 'Custom Paint Finishes' },
 ];
-
-// Smooth scrolling for navigation links
-function enableSmoothScrolling() {
-    const navLinks = document.querySelectorAll('nav ul li a');
-    navLinks.forEach((link) => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const targetId = link.getAttribute('href').slice(1); // Remove the '#' from the href
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-}
 
 // Function to create the gallery dynamically
 function createGallery() {
@@ -37,7 +21,7 @@ function createGallery() {
         const imageDiv = document.createElement('div');
         imageDiv.classList.add('gallery-item');
 
-        //Create the image element
+        // Create the image element
         const img = document.createElement('img');
         img.src = imagePath;
         img.alt = image.caption;
@@ -55,30 +39,20 @@ function createGallery() {
     });
 }
 
-// Initialize the page and gallery
-function initializePage() {
-    createGallery();
-     enableSmoothScrolling();
-}
-
-document.addEventListener('DOMContentLoaded', initializePage);
-
-// Modal functionality for gallery images
-// Open the modal and display the clicked image
+// Modal functionality
 function openModal(imageSrc, captionText) {
     const modal = document.querySelector('.modal');
     const modalImg = document.querySelector('.modal img');
     const modalCaption = document.querySelector('.modal .caption');
 
-    modal.style.display = 'flex';
-    modalImg.src = imageSrc;
-    modalCaption.textContent = captionText;
+    modal.style.display = 'flex'; // Show the modal
+    modalImg.src = imageSrc; // Set the modal image source
+    modalCaption.textContent = captionText; // Set the modal caption
 }
 
-// Close the modal
 function closeModal() {
     const modal = document.querySelector('.modal');
-    modal.style.display = 'none';
+    modal.style.display = 'none'; // Hide the modal
 }
 
 // Add event listeners to handle modal close functionality
@@ -97,6 +71,28 @@ function setupModalClose() {
     });
 }
 
+// Initialize the page
+function initializePage() {
+    createGallery();
+    enableSmoothScrolling();
+    setupModalClose(); // Add modal close event listeners
+}
+
+// Smooth scrolling for navigation links
+function enableSmoothScrolling() {
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const targetId = link.getAttribute('href').slice(1); // Remove the '#' from the href
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+}
 // Handle contact form submission
 function setupContactForm() {
     const contactForm = document.getElementById('contactForm');
