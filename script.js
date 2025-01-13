@@ -64,16 +64,37 @@ function initializePage() {
 document.addEventListener('DOMContentLoaded', initializePage);
 
 // Modal functionality for gallery images
-function openModal(imageSrc) {
-    const modal = document.getElementById('modal');
-    const modalImage = document.getElementById('modalImage');
+// Open the modal and display the clicked image
+function openModal(imageSrc, captionText) {
+    const modal = document.querySelector('.modal');
+    const modalImg = document.querySelector('.modal img');
+    const modalCaption = document.querySelector('.modal .caption');
+
     modal.style.display = 'flex';
-    modalImage.src = imageSrc;
+    modalImg.src = imageSrc;
+    modalCaption.textContent = captionText;
 }
 
+// Close the modal
 function closeModal() {
-    const modal = document.getElementById('modal');
+    const modal = document.querySelector('.modal');
     modal.style.display = 'none';
+}
+
+// Add event listeners to handle modal close functionality
+function setupModalClose() {
+    const modal = document.querySelector('.modal');
+    const modalClose = document.querySelector('.modal .close');
+
+    // Close the modal when the "×" button is clicked
+    modalClose.addEventListener('click', closeModal);
+
+    // Close the modal when clicking outside the image
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
 }
 
 // Handle contact form submission
